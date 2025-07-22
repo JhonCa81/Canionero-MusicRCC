@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuerdaApp - Editor de canciones con acordes</title>
+    <meta name="description" content="Editor de letras de canciones con acordes, funciona online y offline">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Barra de navegación -->
+        <nav class="navbar">
+            <div class="navbar-brand">CuerdaApp</div>
+            <div class="navbar-actions">
+                <button id="sync-btn" title="Sincronizar cambios">
+                    <i class="icon-sync"></i>
+                </button>
+                <button id="offline-btn" title="Modo offline">
+                    <i class="icon-wifi"></i>
+                </button>
+                <button id="user-btn" title="Mi cuenta">
+                    <i class="icon-user"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Panel lateral izquierdo - Carpetas -->
+        <aside class="sidebar">
+            <div class="folder-header">
+                <h3>Mis Carpetas</h3>
+                <button id="new-folder-btn" title="Nueva carpeta">
+                    <i class="icon-folder-plus"></i>
+                </button>
+            </div>
+            <ul class="folder-list" id="folder-list">
+                <!-- Las carpetas se cargarán dinámicamente -->
+            </ul>
+        </aside>
+
+        <!-- Área principal de contenido -->
+        <main class="content">
+            <div class="toolbar">
+                <button id="new-song-btn">Nueva Canción</button>
+                <button id="import-btn">Importar Word/PDF</button>
+                <div class="transpose-controls">
+                    <span>Transportar:</span>
+                    <select id="transpose-key">
+                        <option value="0">Original</option>
+                        <option value="1">+1 semitono</option>
+                        <option value="-1">-1 semitono</option>
+                        <option value="2">+2 semitonos</option>
+                        <option value="-2">-2 semitonos</option>
+                        <!-- Más opciones... -->
+                    </select>
+                </div>
+            </div>
+
+            <!-- Editor de canciones -->
+            <div class="song-editor" id="song-editor" contenteditable="true">
+                <!-- El contenido de la canción se cargará aquí -->
+            </div>
+
+            <!-- Vista previa de la canción -->
+            <div class="song-preview" id="song-preview">
+                <!-- La vista previa formateada aparecerá aquí -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para nueva carpeta -->
+    <div class="modal" id="folder-modal">
+        <div class="modal-content">
+            <h3>Nueva Carpeta</h3>
+            <input type="text" id="folder-name" placeholder="Nombre de la carpeta">
+            <div class="modal-actions">
+                <button id="cancel-folder">Cancelar</button>
+                <button id="save-folder">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/transposer.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/sync.js"></script>
+    <script src="js/app.js"></script>
+    
+    <!-- Inicialización del Service Worker para funcionalidad offline -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registrado con éxito:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Error al registrar el ServiceWorker:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
