@@ -22,25 +22,675 @@
             line-height: 1.6;
         }
 
-        /* ... (el resto del CSS se mantiene igual) ... */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            min-height: calc(100vh - 40px);
+        }
+
+        .status-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            font-weight: 500;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            color: #667eea;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .logo p {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h3 {
+            color: #333;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn.secondary {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .song-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+
+        .song-item {
+            padding: 10px;
+            background: rgba(102, 126, 234, 0.05);
+            margin-bottom: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .song-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-left-color: #667eea;
+        }
+
+        .song-item.active {
+            background: rgba(102, 126, 234, 0.2);
+            border-left-color: #667eea;
+        }
+
+        .song-item h4 {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .song-item p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .transpose-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .transpose-btn {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .transpose-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .key-display {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+        }
+
+        .chord-chart {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            white-space: pre-line;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .chord {
+            color: #667eea;
+            font-weight: bold;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin: 0 2px;
+        }
+
+        .file-upload {
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .modal.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            height: 200px;
+            resize: vertical;
+            font-family: 'Courier New', monospace;
+        }
+
+        .sync-status {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .sync-status.sync-success {
+            background: #28a745;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .sync-status.sync-error {
+            background: #dc3545;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .folder-item {
+            padding: 8px 12px;
+            background: rgba(102, 126, 234, 0.08);
+            margin-bottom: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid #667eea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .folder-item:hover {
+            background: rgba(102, 126, 234, 0.15);
+        }
+
+        .folder-item.active {
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        .folder-item span {
+            font-size: 12px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .folder-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .folder-actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .folder-actions button:hover {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+        }
+
+        .community-item {
+            padding: 12px;
+            background: rgba(76, 175, 80, 0.05);
+            margin-bottom: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid #4caf50;
+        }
+
+        .community-item:hover {
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .community-item h4 {
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .community-item p {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .community-item .stats {
+            font-size: 10px;
+            color: #4caf50;
+            font-weight: 500;
+        }
+
+        .folder-list, .community-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+
+        .visibility-toggle {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            align-items: center;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #4caf50;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+
+        .share-badge {
+            background: #4caf50;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+            
+            .sidebar {
+                position: relative;
+                top: 0;
+                order: 2;
+            }
+            
+            .main-content {
+                order: 1;
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Contenido se mantiene igual -->
     <div class="status-indicator" id="statusIndicator">
         <span id="connectionStatus">🟢 Online</span>
     </div>
 
-    <!-- ... resto del HTML se mantiene igual ... -->
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <h1>🎵 ChordMaster</h1>
+                <p>Gestor de Letras y Acordes</p>
+            </div>
+
+            <div class="section">
+                <button class="btn" onclick="showModal('newSongModal')">
+                    ➕ Nueva Canción
+                </button>
+                <button class="btn secondary" onclick="exportToPDF()">
+                    📄 Exportar PDF
+                </button>
+            </div>
+
+            <div class="section">
+                <h3>Buscar</h3>
+                <input type="text" class="search-box" id="searchBox" placeholder="Buscar canciones..." oninput="searchSongs()">
+            </div>
+
+            <div class="section">
+                <h3>Carpetas</h3>
+                <button class="btn secondary" onclick="showModal('newFolderModal')" style="font-size: 12px; padding: 8px 12px;">
+                    📁 Nueva Carpeta
+                </button>
+                <div class="folder-list" id="folderList">
+                    <!-- Las carpetas se cargarán aquí -->
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Mis Canciones</h3>
+                <div class="song-list" id="songList">
+                    <!-- Las canciones se cargarán aquí -->
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>🌍 Explorar Comunidad</h3>
+                <button class="btn secondary" onclick="loadCommunityContent()" style="font-size: 12px; padding: 8px 12px;">
+                    🔄 Actualizar
+                </button>
+                <div class="community-list" id="communityList">
+                    <!-- El contenido de la comunidad se cargará aquí -->
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Importar</h3>
+                <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                    <input type="file" id="fileInput" accept=".txt,.docx,.pdf" onchange="handleFileUpload(event)">
+                    <p>📁 Subir archivo</p>
+                    <small>Formatos: TXT, DOCX, PDF</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div id="emptyState">
+                <div style="text-align: center; padding: 50px; color: #666;">
+                    <h2>🎸 Bienvenido a ChordMaster</h2>
+                    <p>Selecciona una canción o crea una nueva para empezar</p>
+                </div>
+            </div>
+
+            <div id="songEditor" style="display: none;">
+                <div class="transpose-controls">
+                    <button class="transpose-btn" onclick="transposeSong(-1)">♭ -1</button>
+                    <button class="transpose-btn" onclick="transposeSong(1)">♯ +1</button>
+                    <div class="key-display">Tono: <span id="currentKey">C</span></div>
+                    <button class="transpose-btn" onclick="resetTranspose()">🔄 Original</button>
+                </div>
+
+                <div>
+                    <h1 id="songTitle">Título de la Canción</h1>
+                    <p id="songArtist">Artista</p>
+                </div>
+
+                <div class="chord-chart" id="chordChart">
+                    <!-- El contenido de la canción se mostrará aquí -->
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <button class="btn secondary" onclick="editCurrentSong()">✏️ Editar</button>
+                    <button class="btn secondary" onclick="deleteCurrentSong()">🗑️ Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para nueva canción -->
+    <div class="modal" id="newSongModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nueva Canción</h2>
+                <button class="close-btn" onclick="hideModal('newSongModal')">&times;</button>
+            </div>
+            <form onsubmit="saveSong(event)">
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="text" id="songTitleInput" required>
+                </div>
+                <div class="form-group">
+                    <label>Artista</label>
+                    <input type="text" id="songArtistInput">
+                </div>
+                <div class="form-group">
+                    <label>Tono Original</label>
+                    <input type="text" id="songKeyInput" value="C">
+                </div>
+                <div class="form-group">
+                    <label>Carpeta</label>
+                    <select id="songFolderSelect">
+                        <option value="">Sin carpeta</option>
+                        <!-- Las carpetas se cargarán aquí -->
+                    </select>
+                </div>
+                <div class="visibility-toggle">
+                    <label>🌍 Compartir públicamente:</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="songPublicToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Letra y Acordes</label>
+                    <textarea id="songContentInput" placeholder="Escribe la letra con acordes. Usa corchetes para los acordes: [C]Hola [G]mundo"></textarea>
+                </div>
+                <button type="submit" class="btn">💾 Guardar Canción</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para nueva carpeta -->
+    <div class="modal" id="newFolderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nueva Carpeta</h2>
+                <button class="close-btn" onclick="hideModal('newFolderModal')">&times;</button>
+            </div>
+            <form onsubmit="saveFolder(event)">
+                <div class="form-group">
+                    <label>Nombre de la Carpeta</label>
+                    <input type="text" id="folderNameInput" required>
+                </div>
+                <div class="form-group">
+                    <label>Color</label>
+                    <select id="folderColorInput">
+                        <option value="#667eea">Azul</option>
+                        <option value="#4caf50">Verde</option>
+                        <option value="#ff9800">Naranja</option>
+                        <option value="#9c27b0">Morado</option>
+                        <option value="#f44336">Rojo</option>
+                        <option value="#607d8b">Gris</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">📁 Crear Carpeta</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="sync-status" id="syncStatus"></div>
 
     <script>
         // Estado global de la aplicación
         const appState = {
             currentSong: null,
             currentKey: 'C',
+            originalKey: 'C',
             songs: [],
             folders: [],
-            isOnline: navigator.onLine
+            communityContent: [],
+            currentFolder: null,
+            isOnline: navigator.onLine,
+            editMode: false,
+            user: {
+                id: Math.random().toString(36).substr(2, 9),
+                name: 'Usuario' + Math.floor(Math.random() * 1000)
+            }
         };
 
         // Sistema de acordes
@@ -51,13 +701,10 @@
             transpose(chord, semitones) {
                 if (!chord || typeof chord !== 'string') return chord;
                 
-                // Detectar si es acorde con bemol
                 const isFlat = chord.includes('b');
                 const notes = isFlat ? this.notesFlat : this.notes;
                 
-                // Extraer la nota base del acorde
                 let baseNote = chord.charAt(0);
-                let modifier = '';
                 let suffix = '';
                 
                 if (chord.length > 1) {
@@ -69,11 +716,9 @@
                     }
                 }
                 
-                // Encontrar la posición actual
                 const currentIndex = notes.indexOf(baseNote);
                 if (currentIndex === -1) return chord;
                 
-                // Calcular nueva posición
                 let newIndex = (currentIndex + semitones) % 12;
                 if (newIndex < 0) newIndex += 12;
                 
@@ -89,11 +734,629 @@
             setupKeyboardShortcuts();
             setupOfflineSupport();
             startSyncSystem();
+            renderSongList();
+            renderFolderList();
+            loadCommunityContent();
         });
 
-        // ... resto del JavaScript se mantiene igual ...
+        // Gestión de canciones
+        function saveSong(event) {
+            event.preventDefault();
+            
+            const title = document.getElementById('songTitleInput').value;
+            const artist = document.getElementById('songArtistInput').value;
+            const key = document.getElementById('songKeyInput').value;
+            const content = document.getElementById('songContentInput').value;
+            const folderId = document.getElementById('songFolderSelect').value || null;
+            const isPublic = document.getElementById('songPublicToggle').checked;
+            
+            const song = {
+                id: appState.editMode ? appState.currentSong.id : Date.now(),
+                title,
+                artist,
+                originalKey: key,
+                content,
+                folderId,
+                isPublic,
+                userId: appState.user.id,
+                userName: appState.user.name,
+                createdAt: appState.editMode ? appState.currentSong.createdAt : new Date(),
+                updatedAt: new Date()
+            };
+            
+            if (appState.editMode) {
+                const index = appState.songs.findIndex(s => s.id === song.id);
+                appState.songs[index] = song;
+                appState.editMode = false;
+            } else {
+                appState.songs.push(song);
+            }
+            
+            // Si es pública, agregar al contenido comunitario simulado
+            if (isPublic) {
+                const communityItem = {
+                    id: song.id,
+                    title: song.title,
+                    artist: song.artist,
+                    key: song.originalKey,
+                    content: song.content,
+                    userId: song.userId,
+                    userName: song.userName,
+                    likes: Math.floor(Math.random() * 50),
+                    downloads: Math.floor(Math.random() * 100),
+                    createdAt: song.createdAt
+                };
+                
+                // Actualizar o agregar al contenido comunitario
+                const existingIndex = appState.communityContent.findIndex(c => c.id === song.id);
+                if (existingIndex >= 0) {
+                    appState.communityContent[existingIndex] = communityItem;
+                } else {
+                    appState.communityContent.push(communityItem);
+                }
+                renderCommunityList();
+            }
+            
+            saveData();
+            renderSongList();
+            hideModal('newSongModal');
+            showSong(song);
+            showSyncStatus(isPublic ? 'Canción guardada y compartida públicamente' : 'Canción guardada correctamente', 'success');
+            
+            // Reset form
+            resetSongForm();
+        }
 
-        // Función faltante que mencionaste
+        function resetSongForm() {
+            document.getElementById('songTitleInput').value = '';
+            document.getElementById('songArtistInput').value = '';
+            document.getElementById('songKeyInput').value = 'C';
+            document.getElementById('songContentInput').value = '';
+            document.getElementById('songFolderSelect').value = '';
+            document.getElementById('songPublicToggle').checked = false;
+        }
+
+        function showSong(song) {
+            appState.currentSong = song;
+            appState.currentKey = song.originalKey;
+            appState.originalKey = song.originalKey;
+            
+            document.getElementById('emptyState').style.display = 'none';
+            document.getElementById('songEditor').style.display = 'block';
+            
+            document.getElementById('songTitle').textContent = song.title;
+            document.getElementById('songArtist').textContent = song.artist || 'Sin artista';
+            document.getElementById('currentKey').textContent = appState.currentKey;
+            
+            renderChordChart();
+            updateActiveSong();
+        }
+
+        function renderChordChart() {
+            if (!appState.currentSong) return;
+            
+            const content = appState.currentSong.content;
+            const transposedContent = transposeContent(content);
+            const formattedContent = formatChords(transposedContent);
+            
+            document.getElementById('chordChart').innerHTML = formattedContent;
+        }
+
+        function transposeContent(content) {
+            if (!content) return '';
+            
+            const originalKeyIndex = chordSystem.notes.indexOf(appState.originalKey);
+            const currentKeyIndex = chordSystem.notes.indexOf(appState.currentKey);
+            const semitones = currentKeyIndex - originalKeyIndex;
+            
+            if (semitones === 0) return content;
+            
+            return content.replace(/\[([^\]]+)\]/g, (match, chord) => {
+                const transposedChord = chordSystem.transpose(chord, semitones);
+                return `[${transposedChord}]`;
+            });
+        }
+
+        function formatChords(content) {
+            return content.replace(/\[([^\]]+)\]/g, '<span class="chord">$1</span>');
+        }
+
+        function transposeSong(semitones) {
+            if (!appState.currentSong) return;
+            
+            const currentIndex = chordSystem.notes.indexOf(appState.currentKey);
+            let newIndex = (currentIndex + semitones) % 12;
+            if (newIndex < 0) newIndex += 12;
+            
+            appState.currentKey = chordSystem.notes[newIndex];
+            document.getElementById('currentKey').textContent = appState.currentKey;
+            renderChordChart();
+        }
+
+        function resetTranspose() {
+            if (!appState.currentSong) return;
+            appState.currentKey = appState.originalKey;
+            document.getElementById('currentKey').textContent = appState.currentKey;
+            renderChordChart();
+        }
+
+        function editCurrentSong() {
+            if (!appState.currentSong) return;
+            
+            appState.editMode = true;
+            document.getElementById('songTitleInput').value = appState.currentSong.title;
+            document.getElementById('songArtistInput').value = appState.currentSong.artist || '';
+            document.getElementById('songKeyInput').value = appState.currentSong.originalKey;
+            document.getElementById('songContentInput').value = appState.currentSong.content;
+            document.getElementById('songFolderSelect').value = appState.currentSong.folderId || '';
+            document.getElementById('songPublicToggle').checked = appState.currentSong.isPublic || false;
+            
+            // Actualizar opciones de carpeta
+            updateFolderOptions();
+            
+            showModal('newSongModal');
+        }
+
+        function updateFolderOptions() {
+            const select = document.getElementById('songFolderSelect');
+            select.innerHTML = '<option value="">Sin carpeta</option>';
+            
+            appState.folders.forEach(folder => {
+                const option = document.createElement('option');
+                option.value = folder.id;
+                option.textContent = folder.name;
+                select.appendChild(option);
+            });
+        }
+
+        function deleteCurrentSong() {
+            if (!appState.currentSong) return;
+            
+            if (confirm('¿Estás seguro de que quieres eliminar esta canción?')) {
+                appState.songs = appState.songs.filter(s => s.id !== appState.currentSong.id);
+                saveData();
+                renderSongList();
+                
+                document.getElementById('emptyState').style.display = 'block';
+                document.getElementById('songEditor').style.display = 'none';
+                appState.currentSong = null;
+                
+                showSyncStatus('Canción eliminada', 'success');
+            }
+        }
+
+        function renderSongList() {
+            const songList = document.getElementById('songList');
+            songList.innerHTML = '';
+            
+            // Filtrar canciones por carpeta actual
+            let songsToShow = appState.songs;
+            if (appState.currentFolder !== null) {
+                songsToShow = appState.songs.filter(song => song.folderId === appState.currentFolder);
+            }
+            
+            if (songsToShow.length === 0) {
+                const message = appState.currentFolder !== null ? 'No hay canciones en esta carpeta' : 'No hay canciones';
+                songList.innerHTML = `<p style="text-align: center; color: #666; padding: 20px;">${message}</p>`;
+                return;
+            }
+            
+            songsToShow.forEach(song => {
+                const songItem = document.createElement('div');
+                songItem.className = 'song-item';
+                songItem.onclick = () => showSong(song);
+                
+                const shareIcon = song.isPublic ? '<span class="share-badge">🌍</span>' : '';
+                
+                songItem.innerHTML = `
+                    <h4>${song.title} ${shareIcon}</h4>
+                    <p>${song.artist || 'Sin artista'} • ${song.originalKey}</p>
+                `;
+                
+                songList.appendChild(songItem);
+            });
+        }
+
+        // Gestión de carpetas
+        function saveFolder(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('folderNameInput').value;
+            const color = document.getElementById('folderColorInput').value;
+            
+            const folder = {
+                id: Date.now(),
+                name,
+                color,
+                createdAt: new Date()
+            };
+            
+            appState.folders.push(folder);
+            saveData();
+            renderFolderList();
+            updateFolderOptions();
+            hideModal('newFolderModal');
+            showSyncStatus('Carpeta creada correctamente', 'success');
+            
+            // Reset form
+            document.getElementById('folderNameInput').value = '';
+            document.getElementById('folderColorInput').value = '#667eea';
+        }
+
+        function renderFolderList() {
+            const folderList = document.getElementById('folderList');
+            folderList.innerHTML = '';
+            
+            // Opción "Todas las canciones"
+            const allSongsItem = document.createElement('div');
+            allSongsItem.className = 'folder-item';
+            allSongsItem.onclick = () => selectFolder(null);
+            if (appState.currentFolder === null) allSongsItem.classList.add('active');
+            
+            allSongsItem.innerHTML = `
+                <span>📋 Todas las canciones (${appState.songs.length})</span>
+            `;
+            folderList.appendChild(allSongsItem);
+            
+            if (appState.folders.length === 0) {
+                return;
+            }
+            
+            appState.folders.forEach(folder => {
+                const songCount = appState.songs.filter(song => song.folderId === folder.id).length;
+                const folderItem = document.createElement('div');
+                folderItem.className = 'folder-item';
+                folderItem.onclick = () => selectFolder(folder.id);
+                if (appState.currentFolder === folder.id) folderItem.classList.add('active');
+                
+                folderItem.innerHTML = `
+                    <span style="color: ${folder.color}">📁 ${folder.name} (${songCount})</span>
+                    <div class="folder-actions">
+                        <button onclick="event.stopPropagation(); deleteFolder(${folder.id})" title="Eliminar carpeta">🗑️</button>
+                    </div>
+                `;
+                
+                folderList.appendChild(folderItem);
+            });
+        }
+
+        function selectFolder(folderId) {
+            appState.currentFolder = folderId;
+            renderFolderList();
+            renderSongList();
+            
+            // Ocultar canción actual si no está en la carpeta seleccionada
+            if (appState.currentSong && folderId !== null && appState.currentSong.folderId !== folderId) {
+                document.getElementById('emptyState').style.display = 'block';
+                document.getElementById('songEditor').style.display = 'none';
+                appState.currentSong = null;
+            }
+        }
+
+        function deleteFolder(folderId) {
+            if (confirm('¿Estás seguro de que quieres eliminar esta carpeta? Las canciones no se eliminarán.')) {
+                appState.folders = appState.folders.filter(f => f.id !== folderId);
+                
+                // Mover canciones de la carpeta eliminada a "sin carpeta"
+                appState.songs.forEach(song => {
+                    if (song.folderId === folderId) {
+                        song.folderId = null;
+                    }
+                });
+                
+                if (appState.currentFolder === folderId) {
+                    appState.currentFolder = null;
+                }
+                
+                saveData();
+                renderFolderList();
+                renderSongList();
+                updateFolderOptions();
+                showSyncStatus('Carpeta eliminada', 'success');
+            }
+        }
+
+        // Gestión de contenido comunitario
+        function loadCommunityContent() {
+            // Simular carga de contenido comunitario
+            showSyncStatus('Cargando contenido de la comunidad...', 'success');
+            
+            setTimeout(() => {
+                // Agregar algunas canciones de ejemplo de otros usuarios
+                const sampleCommunityContent = [
+                    {
+                        id: 'comm1',
+                        title: 'Wonderwall',
+                        artist: 'Oasis',
+                        key: 'Em',
+                        content: '[Em7]Today is [G]gonna be the day that they\'re [D]gonna throw it back to [C]you\n[Em7]By now you [G]should\'ve somehow real[D]ized what you gotta [C]do',
+                        userId: 'user123',
+                        userName: 'MúsicoRock',
+                        likes: 42,
+                        downloads: 158,
+                        createdAt: new Date(Date.now() - 86400000) // Ayer
+                    },
+                    {
+                        id: 'comm2',
+                        title: 'Hotel California',
+                        artist: 'Eagles',
+                        key: 'Bm',
+                        content: '[Bm]On a dark desert highway, [F#]cool wind in my hair\n[A]Warm smell of colitas, [E]rising up through the air',
+                        userId: 'user456',
+                        userName: 'GuitarHero',
+                        likes: 67,
+                        downloads: 203,
+                        createdAt: new Date(Date.now() - 172800000) // Hace 2 días
+                    },
+                    {
+                        id: 'comm3',
+                        title: 'Mañana no es hoy',
+                        artist: 'Jesse & Joy',
+                        key: 'C',
+                        content: '[C]Mañana no es [G]hoy, y ayer ya se [Am]fue\n[F]Solo tengo este [C]momento junto a [G]ti',
+                        userId: 'user789',
+                        userName: 'LatinSongs',
+                        likes: 28,
+                        downloads: 89,
+                        createdAt: new Date(Date.now() - 259200000) // Hace 3 días
+                    }
+                ];
+                
+                // Combinar con contenido público del usuario actual
+                appState.communityContent = [
+                    ...appState.songs.filter(song => song.isPublic).map(song => ({
+                        id: song.id,
+                        title: song.title,
+                        artist: song.artist,
+                        key: song.originalKey,
+                        content: song.content,
+                        userId: song.userId,
+                        userName: song.userName,
+                        likes: Math.floor(Math.random() * 30),
+                        downloads: Math.floor(Math.random() * 80),
+                        createdAt: song.createdAt
+                    })),
+                    ...sampleCommunityContent
+                ];
+                
+                renderCommunityList();
+                showSyncStatus('Contenido comunitario actualizado', 'success');
+            }, 1000);
+        }
+
+        function renderCommunityList() {
+            const communityList = document.getElementById('communityList');
+            communityList.innerHTML = '';
+            
+            if (appState.communityContent.length === 0) {
+                communityList.innerHTML = '<p style="text-align: center; color: #666; padding: 15px; font-size: 12px;">No hay contenido comunitario</p>';
+                return;
+            }
+            
+            // Ordenar por fecha de creación (más recientes primero)
+            const sortedContent = [...appState.communityContent].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            
+            sortedContent.forEach(item => {
+                const communityItem = document.createElement('div');
+                communityItem.className = 'community-item';
+                communityItem.onclick = () => importCommunityItem(item);
+                
+                const timeAgo = getTimeAgo(item.createdAt);
+                const isOwnContent = item.userId === appState.user.id;
+                
+                communityItem.innerHTML = `
+                    <h4>${item.title} ${isOwnContent ? '(Tuya)' : ''}</h4>
+                    <p>${item.artist || 'Sin artista'} • ${item.key} • por ${item.userName}</p>
+                    <div class="stats">❤️ ${item.likes} • ⬇️ ${item.downloads} • ${timeAgo}</div>
+                `;
+                
+                communityList.appendChild(communityItem);
+            });
+        }
+
+        function importCommunityItem(item) {
+            if (confirm(`¿Quieres importar "${item.title}" a tu biblioteca?`)) {
+                const importedSong = {
+                    id: Date.now(),
+                    title: item.title + ' (Importada)',
+                    artist: item.artist,
+                    originalKey: item.key,
+                    content: item.content,
+                    folderId: null,
+                    isPublic: false,
+                    userId: appState.user.id,
+                    userName: appState.user.name,
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                    originalAuthor: item.userName
+                };
+                
+                appState.songs.push(importedSong);
+                saveData();
+                renderSongList();
+                showSong(importedSong);
+                showSyncStatus('Canción importada correctamente', 'success');
+                
+                // Simular incremento de descargas
+                const communityItemIndex = appState.communityContent.findIndex(c => c.id === item.id);
+                if (communityItemIndex >= 0) {
+                    appState.communityContent[communityItemIndex].downloads++;
+                    renderCommunityList();
+                }
+            }
+        }
+
+        function getTimeAgo(date) {
+            const now = new Date();
+            const diffInMinutes = Math.floor((now - new Date(date)) / (1000 * 60));
+            
+            if (diffInMinutes < 60) {
+                return diffInMinutes === 0 ? 'Ahora' : `${diffInMinutes}m`;
+            } else if (diffInMinutes < 1440) { // 24 hours
+                return `${Math.floor(diffInMinutes / 60)}h`;
+            } else {
+                return `${Math.floor(diffInMinutes / 1440)}d`;
+            }
+        }
+
+        function updateActiveSong() {
+            document.querySelectorAll('.song-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            if (appState.currentSong) {
+                const items = document.querySelectorAll('.song-item');
+                const index = appState.songs.findIndex(s => s.id === appState.currentSong.id);
+                if (items[index]) {
+                    items[index].classList.add('active');
+                }
+            }
+        }
+
+        function searchSongs() {
+            const query = document.getElementById('searchBox').value.toLowerCase();
+            const songItems = document.querySelectorAll('.song-item');
+            
+            songItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(query) ? 'block' : 'none';
+            });
+        }
+
+        // Gestión de modales
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('show');
+        }
+
+        function hideModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+
+        // Persistencia de datos
+        function saveData() {
+            const data = {
+                songs: appState.songs,
+                version: '1.0'
+            };
+            
+            try {
+                // En un entorno real, aquí se enviarían los datos al servidor
+                console.log('Datos guardados:', data);
+            } catch (error) {
+                console.error('Error guardando datos:', error);
+                showSyncStatus('Error al guardar los datos', 'error');
+            }
+        }
+
+        function loadData() {
+            try {
+                // En un entorno real, aquí se cargarían los datos del servidor
+                // Por ahora, usamos datos de ejemplo
+                appState.songs = [
+                    {
+                        id: 1,
+                        title: "Canción de Ejemplo",
+                        artist: "Artista Demo",
+                        originalKey: "G",
+                        content: "[G]Esta es una [D]canción de [Em]ejemplo\n[C]Con algunos [G]acordes para [D]mostrar\n[G]Cómo funciona [D]ChordMaster",
+                        createdAt: new Date(),
+                        updatedAt: new Date()
+                    }
+                ];
+            } catch (error) {
+                console.error('Error cargando datos:', error);
+                appState.songs = [];
+            }
+        }
+
+        // Manejo de archivos
+        function setupFileUpload() {
+            const fileInput = document.getElementById('fileInput');
+            fileInput.addEventListener('change', handleFileUpload);
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const content = e.target.result;
+                
+                // Crear nueva canción con el contenido del archivo
+                document.getElementById('songTitleInput').value = file.name.replace(/\.[^/.]+$/, "");
+                document.getElementById('songContentInput').value = content;
+                showModal('newSongModal');
+            };
+            
+            reader.readAsText(file);
+            showSyncStatus('Archivo cargado correctamente', 'success');
+        }
+
+        // Exportar a PDF
+        function exportToPDF() {
+            if (!appState.currentSong) {
+                alert('Selecciona una canción para exportar');
+                return;
+            }
+            
+            showSyncStatus('Exportando a PDF...', 'success');
+            
+            // Simulación de exportación a PDF
+            setTimeout(() => {
+                showSyncStatus('PDF exportado correctamente', 'success');
+            }, 2000);
+        }
+
+        // Estado de conexión
+        function updateConnectionStatus() {
+            const status = document.getElementById('connectionStatus');
+            if (navigator.onLine) {
+                status.textContent = '🟢 Online';
+                status.style.color = '#28a745';
+            } else {
+                status.textContent = '🔴 Offline';
+                status.style.color = '#dc3545';
+            }
+            appState.isOnline = navigator.onLine;
+        }
+
+        // Atajos de teclado
+        function setupKeyboardShortcuts() {
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey || e.metaKey) {
+                    switch(e.key) {
+                        case 'n':
+                            e.preventDefault();
+                            showModal('newSongModal');
+                            break;
+                        case 's':
+                            e.preventDefault();
+                            if (appState.currentSong) {
+                                saveData();
+                                showSyncStatus('Canción guardada', 'success');
+                            }
+                            break;
+                        case 'ArrowUp':
+                            e.preventDefault();
+                            transposeSong(1);
+                            break;
+                        case 'ArrowDown':
+                            e.preventDefault();
+                            transposeSong(-1);
+                            break;
+                    }
+                }
+                
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal').forEach(modal => {
+                        modal.classList.remove('show');
+                    });
+                }
+            });
+        }
+
         function showSyncStatus(message, type) {
             const statusDiv = document.getElementById('syncStatus');
             statusDiv.textContent = message;
@@ -106,21 +1369,27 @@
         }
 
         function setupOfflineSupport() {
-            // Implementación básica de soporte offline
-            if (!navigator.onLine) {
+            window.addEventListener('online', updateConnectionStatus);
+            window.addEventListener('offline', () => {
+                updateConnectionStatus();
                 showSyncStatus('Modo offline activado. Los cambios se guardarán localmente.', 'warning');
-            }
+            });
         }
 
         function startSyncSystem() {
-            // Sistema de sincronización básico
             setInterval(() => {
                 if (navigator.onLine) {
-                    // Aquí iría la lógica de sincronización con el servidor
                     console.log('Sincronizando datos...');
                 }
-            }, 30000); // Sincroniza cada 30 segundos
+            }, 30000);
         }
+
+        // Cerrar modales al hacer clic fuera
+        window.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('show');
+            }
+        });
     </script>
 </body>
 </html>
